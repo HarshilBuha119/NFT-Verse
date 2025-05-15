@@ -1,131 +1,150 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { StatusBar, LogBox,TouchableOpacity } from "react-native"
+import { NavigationContainer } from "@react-navigation/native"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import { SafeAreaProvider } from "react-native-safe-area-context"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
+import Icon from "react-native-vector-icons/Ionicons"
+import { BlurView } from "@react-native-community/blur"
+import LinearGradient from "react-native-linear-gradient"
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// Screens
+import SplashScreen from "./screens/SplashScreen"
+import HomeScreen from "./screens/HomeScreen"
+import NFTDetailScreen from "./screens/NFTDetailScreen"
+import ProfileScreen from "./screens/ProfileScreen"
+import WalletScreen from "./screens/WalletScreen"
+import CreateScreen from "./screens/CreateScreen"
+import NotificationsScreen from "./screens/NotificationsScreen"
+import DetailCollection from "./screens/DetailCollection"
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+// Ignore specific warnings
+LogBox.ignoreLogs(["ViewPropTypes will be removed", "ColorPropType will be removed"])
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const Stack = createNativeStackNavigator()
+const Tab = createBottomTabNavigator()
+
+// Custom tab bar button component
+const TabBarButton = ({ children, onPress }) => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={1}
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        paddingVertical: 8,
+        backgroundColor: "black", 
+      }}
+    >
+      {children}
+    </TouchableOpacity>
+  )
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  /*
-   * To keep the template simple and small we're adding padding to prevent view
-   * from rendering under the System UI.
-   * For bigger apps the recommendation is to use `react-native-safe-area-context`:
-   * https://github.com/AppAndFlow/react-native-safe-area-context
-   *
-   * You can read more about it here:
-   * https://github.com/react-native-community/discussions-and-proposals/discussions/827
-   */
-  const safePadding = '5%';
-
+// Main tab navigator
+function MainTabs() {
   return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarStyle: {
+          height: 70,
+          borderTopWidth: 0,
+          backgroundColor: "transparent",
+          position: "absolute",
+          elevation: 0,
+          borderTopColor: "rgba(255, 255, 255, 0.1)",
+        },
+        tabBarButton: (props) => <TabBarButton {...props} />,
+        tabBarActiveTintColor: "#FF3DFF",
+        tabBarInactiveTintColor: "rgba(255, 255, 255, 0.5)",
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: "500",
+          marginBottom: 5,
+        },
+        tabBarIconStyle: {
+          marginTop: 5,
+        },
+      })}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Icon name="grid-outline" color={color} size={22} />,
+        }}
       />
-      <ScrollView
-        style={backgroundStyle}>
-        <View style={{paddingRight: safePadding}}>
-          <Header/>
-        </View>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            paddingHorizontal: safePadding,
-            paddingBottom: safePadding,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </View>
-  );
+      <Tab.Screen
+        name="Wallet"
+        component={WalletScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Icon name="wallet-outline" color={color} size={22} />,
+        }}
+      />
+      <Tab.Screen
+        name="Create"
+        component={CreateScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <LinearGradient
+              colors={["#FF3DFF", "#5D00FF"]}
+              style={{
+                width: 50,
+                height: 50,
+                borderRadius: 25,
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 5,
+              }}
+            >
+              <Icon name="add" color="#FFFFFF" size={26} />
+            </LinearGradient>
+          ),
+          tabBarLabel: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Notifications"
+        component={NotificationsScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Icon name="notifications-outline" color={color} size={22} />,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Icon name="person-outline" color={color} size={22} />,
+        }}
+      />
+    </Tab.Navigator>
+  )
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+export default function App() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Splash"
+            screenOptions={{
+              headerShown: false,
+              animation: "fade",
+            }}
+          >
+            <Stack.Screen name="Splash" component={SplashScreen} />
+            <Stack.Screen name="Main" component={MainTabs} />
+            <Stack.Screen name="NFTDetail" component={NFTDetailScreen} />
+            <Stack.Screen name="DetailCollection" component={DetailCollection}/>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
+  )
+}
