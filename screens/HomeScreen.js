@@ -112,12 +112,7 @@ export default function HomeScreen({ navigation }) {
         const collectionsData = await collectionsResponse.json()
         console.log(collectionsData);
         
-        const formattedCollections = collectionsData.collections?.map((collection, index) => ({
-          id: collection.collection || index.toString(),
-          name: collection.collection || `Collection #${index + 1}`,
-          image:collection.image_url,
-          author:collection.name
-        })) || []
+        
 
         const formattedNFTs = nftData.nfts?.map((collection, index) => ({
           id: collection.identifiers ,
@@ -252,7 +247,7 @@ export default function HomeScreen({ navigation }) {
   const renderCollectionItem = ({ item }) => {
 
     return (
-      <TouchableOpacity style={styles.collectionItem} onPress={()=>handleAzuki(item.API_BASE_URL,item.name)}>
+      <TouchableOpacity style={styles.collectionItem} onPress={handleAzuki.bind(null,item.API_BASE_URL,item.name)}>
         <View style={styles.collectionBannerContainer}>
           <Image source={{ uri: item.banner }} style={styles.collectionBanner} />
           <LinearGradient colors={["transparent", "rgba(0,0,0,0.7)"]} style={styles.collectionBannerGradient} />
@@ -360,7 +355,7 @@ export default function HomeScreen({ navigation }) {
         <Animated.View style={[styles.featuredContainer, featuredStyle]}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Featured NFTs</Text>
-            <TouchableOpacity onPress={()=>navigation.navigate("DetailCollection")}>
+            <TouchableOpacity onPress={()=>navigation.navigate("DetailCollection",{api:"https://api.opensea.io/api/v2/collection/azuki/nfts?limit=50",name:"Featured "})}>
               <Text style={styles.sectionAction}>See All</Text>
             </TouchableOpacity>
           </View>

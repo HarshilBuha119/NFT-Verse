@@ -67,16 +67,8 @@ export default function DetailCollection({navigation,route}) {
             author: collection.collection,
             image: collection.display_image_url,
             likes: Math.floor(Math.random() * 500), // OpenSea doesn't provide likes
+            description:collection.description
           })) || [];
-        console.log(formattedNFTs);
-        console.log(
-          formattedNFTs.id,
-          formattedNFTs.name,
-          formattedNFTs.author,
-          formattedNFTs.price,
-          formattedNFTs.image,
-          formattedNFTs.likes,
-        );
         setFeaturedNFTs(formattedNFTs);
       } catch (err) {
         console.error('OpenSea API Error:', err);

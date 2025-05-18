@@ -142,6 +142,8 @@ export default function NFTDetailScreen({route, navigation}) {
     };
   });
 
+  const price=Math.floor(Math.random() * 5000)
+
   return (
     <View style={[styles.container, {paddingTop: insets.top}]}>
       <LinearGradient
@@ -257,7 +259,7 @@ export default function NFTDetailScreen({route, navigation}) {
                         style={{flex: 1}}
                       />
                     </MaskedView>
-                    <Text style={styles.fiatPrice}>≈ $1,234.56</Text>
+                    <Text style={styles.fiatPrice}>≈ ${price}</Text>
                   </View>
                   <View style={styles.timerContainer}>
                     <Text style={styles.timerLabel}>Auction ending in</Text>

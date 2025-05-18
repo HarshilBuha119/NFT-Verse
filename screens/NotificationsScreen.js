@@ -17,7 +17,7 @@ const NOTIFICATIONS = [
     message: 'Someone placed a bid of 0.45 ETH on your NFT "Cosmic Perspective #231"',
     time: "2 hours ago",
     read: false,
-    image: "https://picsum.photos/id/1/100/100",
+    image: "https://i.seadn.io/s/raw/files/c769d4b0f2fe5bc90f0ab9fba0d754f8.png?w=500&auto=format",
   },
   {
     id: "2",
@@ -26,7 +26,7 @@ const NOTIFICATIONS = [
     message: 'Your NFT "Digital Dreams #08" was sold for 0.2 ETH',
     time: "1 day ago",
     read: false,
-    image: "https://picsum.photos/id/20/100/100",
+    image: "https://i.seadn.io/gae/b1bKf4Z1cje-OhJxsBvH1ToCTIG-JyPXQwn_qRnvHp4yETrdzOzJI4qC9Vf5vmZuPhUqagU8Y0fMgEKBqO8NMWiZg4rHhBiXGlYf?w=500&auto=format",
   },
   {
     id: "3",
@@ -43,7 +43,7 @@ const NOTIFICATIONS = [
     message: 'CryptoArtist liked your NFT "Abstract Reality #45"',
     time: "3 days ago",
     read: true,
-    image: "https://picsum.photos/id/37/100/100",
+    image: "https://i.seadn.io/s/raw/files/dfc76e451497a427ac57afd910f42b7f.png?w=500&auto=format",
   },
   {
     id: "5",
@@ -313,8 +313,8 @@ const styles = StyleSheet.create({
   },
   unreadIndicator: {
     position: "absolute",
-    top: 15,
-    right: 15,
+    top: 10,
+    right: 10,
     width: 8,
     height: 8,
     borderRadius: 4,

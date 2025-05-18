@@ -1,97 +1,70 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# NEXUS — Premium NFT Marketplace App
 
-# Getting Started
+NEXUS is a visually rich and modern **NFT (Non-Fungible Token)** marketplace built with **React Native**. It provides a seamless experience for users to browse, collect, trade, and create NFTs. With sleek animations, smooth transitions, and a user-friendly interface, NEXUS redefines how users interact with digital assets.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## ✨ Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### 🖼 Browse & Explore
+- View popular NFT collections like **Bored Ape Yacht Club** and others.
+- Explore trending and featured NFTs with high-quality visuals and animations.
+- View detailed information for each NFT: image, name, description, creator, and attributes.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### 💼 Wallet Management
+- Built-in wallet to **send**, **receive**, and **store** NFTs and cryptocurrencies.
+- Track **transaction history** and manage **payment methods**.
 
-```sh
-# Using npm
-npm start
+### 🔄 NFT Trading
+- Seamless interface to **buy** and **sell** NFTs.
+- Real-time updates for assets and ownership.
 
-# OR using Yarn
-yarn start
-```
+### 🛠 Create & Mint
+- Users can **create** and **mint** their own NFTs.
+- Upload images, add metadata, and define collection settings.
 
-## Step 2: Build and run your app
+### 🔔 Notifications & Profiles
+- View alerts about activity like purchases, sales, or price drops.
+- Manage user profiles and asset collections.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+---
 
-### Android
+## 📱 Screens & Components
 
-```sh
-# Using npm
-npm run android
+- `HomeScreen.js` – Landing view with featured NFTs and categories.
+- `DetailCollection.js` – Detailed view for NFT collections.
+- `WalletScreen.js` – Wallet with asset overview and transaction history.
+- `CreateScreen.js` – NFT creation and minting interface.
+- `ProfileScreen.js` – User profile and collection stats.
+- Additional UI components: animated search bar, gradients, bottom tab navigation, and more.
 
-# OR using Yarn
-yarn android
-```
+---
 
-### iOS
+## 🛠 Tech Stack
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+- **React Native** (with Expo or bare setup)
+- **React Navigation**
+- **Reanimated / Animated API** for smooth transitions
+- **Context API / Redux** (if used) for state management
+- **Axios / Fetch** for API calls (e.g., OpenSea API)
+- **Gradient Libraries** for visual styling (e.g., `react-native-linear-gradient`)
+- **SVG & Lottie Animations** for premium UX
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+---
 
-```sh
-bundle install
-```
+## 🚀 Getting Started
 
-Then, and every time you update your native dependencies, run:
+### Prerequisites
 
-```sh
-bundle exec pod install
-```
+- Node.js (v16+)
+- Yarn or npm
+- Expo CLI (if using Expo)
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### Installation
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+```bash
+git clone https://github.com/yourusername/nexus-nft-marketplace.git
+cd nexus-nft-marketplace
+npm install
+# or
+yarn install
